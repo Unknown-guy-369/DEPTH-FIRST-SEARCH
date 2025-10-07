@@ -1,115 +1,132 @@
-# BREADTH-FIRST-SEARCH
-<h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
-<H3>Aim:</H3>
-<p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
-<h3>Theory:</h3>
-<p>Breadth-First Traversal (or Search) for a graph is like the Breadth-First Traversal of a tree.
-The only catch here is that, unlike trees, graphs may contain cycles so that we may come to the same node again. To avoid processing a node more than once, we divide the vertices into two categories:
-<ol><li>Visited</li>
-<li>Not Visited</li></ol>
-</p>
-<p>A Boolean visited array is used to mark the visited vertices. For simplicity, it is assumed that all vertices are reachable from the starting vertex. BFS uses a queue data structure for traversal.</p>
-<p><strong>How does BFS work?</strong><br>
-  Starting from the root, all the nodes at a particular level are visited first, and then the next level nodes are traversed until all the nodes are visited.
-To do this, a queue is used. All the adjacent unvisited nodes of the current level are pushed into the queue, and the current-level nodes are marked visited and popped from the queue.
-Illustration:
-Let us understand the working of the algorithm with the help of the following example.
-Step1: Initially queue and visited arrays are empty.
-</p>
+# Breadth-First Search (BFS)  
 
-![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/8acdebf8-ecc2-4d10-a208-45cce441f059)
+## Exp No 3: Implement Breadth First Search Traversal of a Graph  
 
+**Name:**  
+**Register Number:**  
 
-Queue and visited arrays are empty initially.
-Step2: Push node 0 into queue and mark it visited.
+### Aim
+To implement Breadth First Search Traversal of a Graph using Python 3.  
 
-![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/0e9ce012-8e1f-43d7-b7b9-c0fb19fe0c3f)
+---
 
+### Theory
+Breadth-First Traversal (or Search) for a graph is similar to the Breadth-First Traversal of a tree.  
+Unlike trees, graphs may contain cycles, so a node may be visited more than once. To avoid this, vertices are categorized as:  
 
-Push node 0 into queue and mark it visited.
-Step 3: Remove node 0 from the front of queue and visit the unvisited neighbours and push them into queue.
+1. **Visited**  
+2. **Not Visited**  
 
-![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/67d8fa3b-ce9e-46c2-9dd7-089e204e667a)
+A Boolean `visited` array is used to mark visited vertices. BFS uses a **queue** data structure for traversal.  
 
-Step 4: Remove node 1 from the front of queue and visit the unvisited neighbours and push them into queue.
+**How BFS works:**  
+Starting from the root, all nodes at a particular level are visited first, then the next level nodes are traversed until all nodes are visited.  
+All the adjacent unvisited nodes of the current node are pushed into the queue, and the current node is marked as visited and popped from the queue.  
 
-![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/b0cf0fde-8a86-41cb-a054-36875ac24ab0)
+**Illustration:**  
+1. Initially, the queue and visited array are empty.  
+2. Push node 0 into the queue and mark it visited.  
+3. Remove node 0 from the front of the queue, visit unvisited neighbours, and push them into the queue.  
+4. Repeat this process for all nodes until the queue is empty.  
 
-Step 5: Remove node 2 from the front of queue and visit the unvisited neighbours and push them into queue.
+---
 
-![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/8968a163-6b3a-4f7e-8ad4-bbf24f326b9b)
+### Algorithm
+1. Construct a Graph with Nodes and Edges.  
+2. Use a Queue to perform BFS traversal.  
+3. Insert a Start Node into the Queue.  
+4. Find its successors or neighbors and check if they are visited.  
+5. If not visited, add them to the Queue. Otherwise, continue.  
+6. Repeat steps 4-5 until all nodes are visited.  
 
-Step 6: Remove node 3 from the front of queue and visit the unvisited neighbours and push them into queue. 
-As we can see that every neighbours of node 3 is visited, so move to the next node that are in the front of the queue.
+---
 
-![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/7a1c1b16-ea69-497f-a099-8440200f6dc0)
+### Sample Input 1
+7 9
+A B
+A C
+A F
+C E
+C F
+C D
+D E
+D G
+G F
 
-Steps 7: Remove node 4 from the front of queue and visit the unvisited neighbours and push them into queue. 
-As we can see that every neighbours of node 4 are visited, so move to the next node that is in the front of the queue.
-
-![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/8e16ffa3-c3d6-4774-822b-6eb84adedad9)
-
-Remove node 4 from the front of queue and visit the unvisited neighbours and push them into queue.
-Now, Queue becomes empty, So, terminate these process of iteration.
-
-
-<hr>
-<h2>Algorithm:</h2>
-<hr>
-<ol>
-  <li>Construct a Graph with Nodes and Edges</li>
- <li>Breadth First Uses Queue and iterates through the Queue for Traversal.</li>
-  <li>Insert a Start Node into the Queue.</li>
-<li>Find its Successors Or neighbors and Check whether the node is visited or not.</li>
-<li>If Not Visited, add it to the Queue. Else Continue.</li>
-<li>Iterate steps 4 and 5 until all nodes get visited, and there are no more unvisited nodes.</li>
-
-</ol>
-
-<hr>
-<h3>Sample Input</h3>
-<hr>
-7 9 <BR>
-A B <BR>
-A C <BR>
-A F <BR>
-C E <BR>
-C F <BR>
-C D <BR>
-D E <BR>
-D G <BR>
-G F <BR>
-<hr>
-<h3>Sample Output</h3>
-<hr>
+### Sample Output 1
 ['A', 'B', 'C', 'F', 'E', 'D', 'G']
 
-<hr>
+---
 
-<hr>
-<h3>Sample Input</h3>
-<hr>
-5 6 <BR>
-0 1 <BR>
-0 2 <BR>
-1 2 <BR>
-1 3 <BR>
-2 4 <BR>
-3 4 <BR>
-<hr>
-<h3>Sample Output</h3>
-<hr>
+### Sample Input 2
+
+5 6
+0 1
+0 2
+1 2
+1 3
+2 4
+3 4
+
+### Sample Output 2
+
 ['0', '1', '2', '3', '4']
-<hr>
-<h3>Result:</h3>
-<hr>
-<p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
 
 
+---
+### Program
+```py
+
+from collections import deque, defaultdict
+
+def bfs(graph, start, visited, path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+
+    while queue:
+        tmpnode = queue.popleft()
+        for neighbour in graph[tmpnode]:
+            if not visited[neighbour]:
+                path.append(neighbour)
+                queue.append(neighbour)
+                visited[neighbour] = True
+    return path
 
 
+graph = defaultdict(list)
+v, e = map(int, input("Enter vertices and edges: ").split())
 
+# Check if vertices are integers or characters
+is_integer_graph = None
 
+for _ in range(e):
+    u, v = input().split()
+    # Detect type on first edge
+    if is_integer_graph is None:
+        is_integer_graph = u.isdigit()
+    # Convert to int if integer graph
+    if is_integer_graph:
+        u, v = int(u), int(v)
+    graph[u].append(v)
+    graph[v].append(u)
 
+# Choose start automatically
+if is_integer_graph:
+    start = 0
+else:
+    start = 'A'
+
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph, start, visited, path)
+print("BFS Traversal:", traversedpath)
+
+```
+### Output
+![alt text](image.png)
+![alt text](image-1.png)
+
+### Result
+Thus, a graph was constructed and BFS traversal for the graph was implemented successfully
